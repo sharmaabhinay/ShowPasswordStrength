@@ -16,32 +16,47 @@
             box-shadow: 6px 6px 15px 5px rgb(0, 0, 0);
             position: relative;
             top: 15rem;
+            /* width: 20rem; */
             
 
-        }#input{
-            width: 21rem;
-            height: 2.5rem;
+        }#input-container{
+            /* border: 1px solid black; */
+            width: 20rem;
+            display: flex;
+        }
+        #input{
+            width: 18rem;
+            height: 2.4rem;
             padding: 2px 1rem;
-            border: 2px solid rgb(0, 0, 0);
-            border-radius: 6px;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
             outline: none;
+            border: 2px solid black;
+            border-radius: 6px;            
         }.show-hide{
             cursor: pointer;
-            transform: translate(-2rem , 0px);
+            transform: translate(-1.7rem , 12px);
             border: 1px solid white;
+            
+        }#indicator-container{
+            margin-top: 1rem;
         }
         .display-n{
             display: none;
         }
         #creator{
-            position: absolute;
+            position: fixed;
             bottom: 2px;
             right: 10px;
-            color: white;
+            color: rgb(0, 0, 0);
             opacity: 0.5;
         }
+        /* @media (max-width: 320px){
+            #input{
+                width: 15rem;
+            }.parent{
+                padding: 0rem;
+                background-color: green;
+            }
+        } */
     </style>
 </head>
 <body>
