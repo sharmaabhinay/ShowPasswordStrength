@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength indentifier</title>
+    <style>
+        body{
+            background-color: rgb(122, 72, 158);
+        }
+        .parent{
+            background-color: white;
+            display: inline-block;
+            padding: 3rem;
+            text-align: start;
+            box-shadow: 6px 6px 15px 5px rgb(0, 0, 0);
+            position: relative;
+            top: 15rem;
+            
+
+        }#input{
+            width: 21rem;
+            height: 2.5rem;
+            padding: 2px 1rem;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 6px;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            outline: none;
+        }.show-hide{
+            cursor: pointer;
+            transform: translate(-2rem , 0px);
+            border: 1px solid white;
+        }
+        #input:focus{
+            /* border: none; */
+            /* color: rgb(132, 145, 17); */
+        }.display-n{
+            display: none;
+        }
+        #creator{
+            position: absolute;
+            bottom: 2px;
+            right: 10px;
+            color: white;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="parent">
+            <div id="input-container">
+                <input type="password" id="input" placeholder="Type Password"><span><i class="fa-regular fa-eye show-hide"></i></span>
+                
+            </div>
+            <div id="indicator-container" class="display-n">
+                <span><i class="fa-solid fa-circle-exclamation"></i></span>
+                <span id="text-indicator">Under Testing</span>
+            </div>
+        </div>
+    </center>
+    <p id="creator">designed by Abhinay Sharma</p>
+    <script>
+        let input = document.getElementById('input');
+let show_hide = document.querySelector('.show-hide');
+let text = document.getElementById('text-indicator');
+let indicator = document.getElementById('indicator-container');
+
+let alphabets = /[a-z]/;
+let Alphabets = /[A-Z]/;
+let numbers = /[0-9]/;
+let Scharacters = /[`,~,!,@,#,$,%,^,&,*,-,_,=,+]/;
+
+show_hide.addEventListener('click', () => {
+    if (input.type == 'password') {
+        input.type = 'text';
+        show_hide.classList.replace("fa-eye-slash", "fa-eye");
+    } else {
+        input.type = 'password';
+        show_hide.classList.replace("fa-eye", "fa-eye-slash");
+    }
+});
+
+input.addEventListener('keyup', () => {
+    let val = input.value;
+    if (val.match(alphabets) || val.match(numbers) || val.match(Scharacters) || val.match(Alphabets)) {
+        text.innerHTML = 'Password is Weak';
+        indicator.style.color = 'orange';
+        show_hide.style.color = 'orange';
+        input.style.borderColor = 'orange';
+        indicator.classList.remove('display-n');
+    }
+    if (val.match(alphabets) && val.match(numbers) && val.match(Scharacters)) {
+        text.innerHTML = 'Password is medium';
+        indicator.style.color = 'rgb(132, 145, 17)';
+        show_hide.style.color = 'rgb(132, 145, 17)';
+        input.style.borderColor = 'rgb(132, 145, 17)';
+        indicator.classList.remove('display-n');
+    }
+    if (val.match(alphabets) && val.match(numbers) && val.match(Scharacters) && val.match(Alphabets)) {
+        text.innerHTML = 'Password is intermediate';
+        indicator.style.color = 'yellowgreen';
+        show_hide.style.color = 'yellowgreen';
+        input.style.borderColor = 'yellowgreen';
+        indicator.classList.remove('display-n');
+    }
+    if (val.match(alphabets) && val.match(numbers) && val.match(Scharacters) && val.match(Alphabets) && val.length >= 8) {
+        text.innerHTML = 'Password is strong';
+        indicator.style.color = 'green';
+        show_hide.style.color = 'green';
+        input.style.borderColor = 'green';
+        indicator.classList.remove('display-n');
+    }
+    if (val == "") {
+        indicator.classList.add('display-n');
+        input.style.borderColor = 'black';
+        show_hide.style.color = 'black'
+    }
+});
+
+    </script>
+    <script src="https://kit.fontawesome.com/763962caf7.js" crossorigin="anonymous"></script>
+</body>
+</html>
